@@ -20,7 +20,7 @@ ga('send', 'pageview');</script></head><body><header class="header"><div class="
 </ol>
 <p>The layout of a POD is guaranteed(members will be in the order they are declared with). So if you use <code>memcpy</code> on it, you can be sure what you copy doesn&#39;t change its structure mysteriously.</p>
 <p>To check if a class is POD at compile time, do this:</p>
-<pre><code class="lang-cpp"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;type_traits&gt;</span>
+<pre><code class="lang-cpp"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;type_traits&gt;</span></span>
 
 <span class="hljs-keyword">static_assert</span>(<span class="hljs-built_in">std</span>::is_pod&lt;A&gt;::value, <span class="hljs-string">"A must be a POD type."</span>);
 </code></pre>

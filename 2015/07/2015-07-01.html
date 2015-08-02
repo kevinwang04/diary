@@ -315,25 +315,25 @@ setPixel<span class="hljs-params">(round<span class="hljs-params">(x)</span>, ro
 </ul>
 </li>
 </ul>
-<pre><code>line<span class="hljs-params">(x1, y1, x2, y2)</span> {
-  int x = x1, y = y1,
+<pre><code>line(x1, y1, x2, y2) {
+  <span class="hljs-keyword">int</span> x = x1, y = y1,
       dx = x2 - x1,
       dy = y2 - y1,
-      p = <span class="hljs-number">2</span> <span class="hljs-built_in">*</span> dy - dx,
-      de = <span class="hljs-number">2</span> <span class="hljs-built_in">*</span> dy  <span class="hljs-comment">// step for right</span>
-      dne = <span class="hljs-number">2</span> <span class="hljs-built_in">*</span> <span class="hljs-params">(dy - dx)</span>;  <span class="hljs-comment">// step for top-right</span>
+      p = <span class="hljs-number">2</span> * dy - dx,
+      de = <span class="hljs-number">2</span> * dy  <span class="hljs-comment">// step for right</span>
+      dne = <span class="hljs-number">2</span> * (dy - dx);  <span class="hljs-comment">// step for top-right</span>
 
-  setPixel<span class="hljs-params">(x, y)</span>;  <span class="hljs-comment">// start</span>
+  setPixel(x, y);  <span class="hljs-comment">// start</span>
 
-  while<span class="hljs-params">(x &lt; x2)</span> {
-    <span class="hljs-keyword">if</span> <span class="hljs-params">(p &lt; <span class="hljs-number">0</span>)</span> {
+  <span class="hljs-keyword">while</span>(x &lt; x2) {
+    <span class="hljs-keyword">if</span> (p &lt; <span class="hljs-number">0</span>) {
       x += <span class="hljs-number">1</span>;  <span class="hljs-comment">// right</span>
       p += de;  <span class="hljs-comment">// update</span>
     } <span class="hljs-keyword">else</span> {
       x += <span class="hljs-number">1</span>; y += <span class="hljs-number">1</span>;  <span class="hljs-comment">// top right</span>
       p += dne;  <span class="hljs-comment">// update</span>
     }
-    setPixel<span class="hljs-params">(x, y)</span>; <span class="hljs-comment">// draw this new pixel</span>
+    setPixel(x, y); <span class="hljs-comment">// draw this new pixel</span>
   }
 }
 </code></pre><h3 id="flood-fill">Flood fill</h3>

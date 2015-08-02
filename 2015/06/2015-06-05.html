@@ -13,11 +13,11 @@ ga('send', 'pageview');</script></head><body><header class="header"><div class="
 <h3 id="-es6-in-depth-arrow-functions-https-hacks-mozilla-org-2015-06-es6-in-depth-arrow-functions-"><a href="https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/">ES6 In Depth: Arrow functions</a></h3>
 <h4 id="the-naughty-arrows">The naughty arrows</h4>
 <p>In the early days, to prevent browsers that doesn&#39;t support JS from choking on it, you can wrap JS code in HTML comments so that the browsers would ignore it, like this:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">language</span>=<span class="hljs-value">"javascript"</span>&gt;</span><span class="xml">
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">language</span>=<span class="hljs-value">"javascript"</span>&gt;</span><span class="handlebars"><span class="xml">
 <span class="hljs-comment">&lt;!--
   document.bgColor = "brown";  // red
 // --&gt;</span>
-</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</span></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>So in JS, <code>&lt;!--</code> has the same effect as <code>//</code>, and this is even valid in Node(V8)! And ES6 finally <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-html-like-comments">standardized it</a>.</p>
 <p>Notice that while <code>&lt;!--</code> is part of JS now, <code>--&gt;</code> isn&#39;t. Because <code>--&gt;</code> itself is an operator(though you can just think of them as <code>--</code> and <code>&gt;</code> together):</p>
