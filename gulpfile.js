@@ -81,7 +81,7 @@ function getFirstAndLastFile(files) {
     return path.basename(file).split('.')[0];  // strip out dir names
   }).filter(function(file) {  // filter out articles
     return /\d{4}-\d{2}-\d{2}/.test(file);
-  }).sort(); // lexical order = chronological order for ISO Date 
+  }).sort(); // lexical order = chronological order for ISO Date
 
   return [sorted[0], sorted[sorted.length - 1]];
 }
@@ -165,7 +165,7 @@ gulp.task('build-debug', ['js-debug','markup', 'css-debug']);
 gulp.task('build', ['js','markup', 'css']);
 
 // ------------------------
-//  Launch server 
+//  Launch server
 // ------------------------
 function serve(done) {
   http.createServer(
@@ -175,8 +175,8 @@ function serve(done) {
       index: 'index.html',
       cache: false }
     )
-  ).listen(8000, done);
-  console.log('Server listening on http://localhost:8000/diary/');
+  ).listen(8090, done);
+  console.log('Server listening on http://localhost:8090/diary/');
 }
 
 gulp.task('server', ['build-debug'], serve);

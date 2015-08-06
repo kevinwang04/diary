@@ -1,3 +1,3 @@
-[submodule "diary"]
-	path = diary
-	url = ../my-tech-diary/my-tech-diary.git
+[submodule "my-tech-diary"]
+	path = my-tech-diary
+	url = git://github.com/kevinwang04/my-tech-diary.git
