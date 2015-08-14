@@ -13,6 +13,30 @@ ga('send', 'pageview');</script></head><body><header class="header"><div class="
 <p>Even if I never admined that when I talk with someone , I hope to here some meaningful and significant thing , but in addtion , I also want to get the very idea of you words . But actually it&#39;s not always the case . That dosen&#39;t mean it must be some realisable or unbending fault of someone , I always try to figure out in which situation that it will happen naturally , and so it puzzled me for a long time ...</p>
 <hr>
 <h2 id="tech">tech</h2>
+<p>nginx 502 bad gateway:</p>
+<ul>
+<li><p>error log</p>
+<pre><code>  <span class="hljs-number">2015</span>/<span class="hljs-number">08</span>/<span class="hljs-number">13</span> <span class="hljs-number">03</span>:<span class="hljs-number">18</span>:<span class="hljs-number">50</span> [error] <span class="hljs-number">12817</span><span class="hljs-preprocessor">#<span class="hljs-number">0</span>: *<span class="hljs-number">3</span> connect() failed (<span class="hljs-number">111</span>: Connection refused) while connecting to upstream, client: <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>, server: www.cstatic.com, request: <span class="hljs-string">"GET /favicon.ico HTTP/1.1"</span>, upstream: <span class="hljs-string">"http://127.0.0.1:12010/favicon.ico"</span>, host: <span class="hljs-string">"www.cstatic.com"</span></span>
+</code></pre></li>
+<li><p>fix error</p>
+<pre><code>  upstream ws-cstatic {
+      server <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>;    <span class="hljs-comment">//delete the port</span>
+  }
+</code></pre></li>
+</ul>
+<p>webpack-dev-server error</p>
+<ul>
+<li>check the upstream config and the proxy_pass config </li>
+<li>check the /etc/hosts file<pre><code>  sudo <span class="hljs-keyword">subl </span>/etc/hosts
+</code></pre></li>
+<li>run gulp <pre><code>  <span class="hljs-tag">gulp</span> <span class="hljs-attr_selector">[hot]</span> <span class="hljs-attr_selector">[dev]</span>
+</code></pre></li>
+<li>run npm start<pre><code>  <span class="hljs-built_in">npm</span> start
+</code></pre></li>
+<li>check the server port<pre><code>   sudo netstat -ap <span class="hljs-string">| grep 12010</span>
+</code></pre></li>
+</ul>
+<hr>
 <p>some new modules
     var React = require(&#39;react/addons&#39;)   //add react with addons.
     var source  = require(&#39;vinyl-source-stream&#39;)
@@ -44,4 +68,58 @@ ga('send', 'pageview');</script></head><body><header class="header"><div class="
 </ul>
 <p>eventKey?</p>
 <p>javascript dynamic use &quot;import&quot; keyword </p>
+<hr>
+<p>jQuery</p>
+<ul>
+<li>$.extend({},addons.DEFAULTS,user_opts);   //fix the argument problem</li>
+<li>$.proxy(this.event,this_event_target) //fix the this object problem</li>
+<li>jQuery animation should add an if </li>
+<li>$.fn.extend  //define a jQuery plugin<pre><code>  $.fn.extend({
+      addons:<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+          <span class="hljs-keyword">this</span>.<span class="hljs-keyword">each</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(opts)</span></span>{
+              <span class="hljs-keyword">new</span> addons(<span class="hljs-keyword">this</span>,opts)
+          });
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>; <span class="hljs-comment">//this means the element that you choosed</span>
+      }
+  })
+</code></pre></li>
+</ul>
+<hr>
+<p>SASS</p>
+<ul>
+<li>嵌套</li>
+<li>$变量  $var = value;</li>
+<li>@mixin函数名（参数）</li>
+<li>@import</li>
+<li>@extend</li>
+</ul>
+<hr>
+<p>requireJS</p>
+<ul>
+<li>requirejs.config<pre><code>  <span class="hljs-tag">requirejs</span><span class="hljs-class">.config</span>({
+      <span class="hljs-tag">paths</span>: {
+          <span class="hljs-attribute">jquery</span>: <span class="hljs-string">"xxxxx"</span>
+      }
+  })
+</code></pre></li>
+<li><p>requirejs</p>
+<pre><code>  requeryjs([<span class="hljs-string">'jquery'</span>],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>) </span>{
+      $(<span class="hljs-string">'.class'</span>)...
+  })
+</code></pre></li>
+<li><p>define</p>
+<pre><code>  define([<span class="hljs-string">'jquery'</span>],<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) </span>{
+      <span class="hljs-keyword">return</span> {
+          <span class="hljs-built_in">module</span>:<span class="hljs-built_in">module</span>;
+      }
+  })
+</code></pre></li>
+</ul>
+<hr>
+<ul>
+<li>transition : attr_name time;</li>
+<li>transform: scale(1.5)</li>
+<li>css spite</li>
+<li>:before/:after </li>
+</ul>
 </div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/kevinwang04" class="author-name">kevinwang</a>-<a href="https://github.com/kevinwang04/my-diary.git" class="source-repo">Source</a></address><p>welcome to my<a href="http://home.kwang520.com" class="site-repo"> home page</a></p></footer></body></html>
