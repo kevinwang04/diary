@@ -1,0 +1,126 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>August 22, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-63818301-1', 'auto');
+ga('send', 'pageview');</script></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>August 22, 2015</h1></header><div class="content"><div class="diary"><h2 id="about-life">about life</h2>
+<p>没错奏是这么开心 ^_^</p>
+<p>之前因为红杏代理服务器出的重大事故，导致现在大量用户还不能正常访问互联网（包括我），当然我所指的“正常的”范畴至少包括谷歌。
+打开红杏就是一个长城的背景，想想自己每个月花了钱还是没有办法正常的享受网络服务就非常的懊恼，然后又想到之前装android studio更新sdk时红杏公益代理都用不了，还有在docker虚拟机中rebygen的源被封，不断的提示update bundle failed 我就甚是气炸。</p>
+<p>没办法，活在大天朝还是得服从一些规矩，所以我还是指望着红杏能够什么时候从“灾难”中走出。然而已经快一个礼拜了，似乎丝毫没有好转，我已经觉得不能再等了，于是只能再次——</p>
+<blockquote>
+<p>自己动手，丰衣足食</p>
+</blockquote>
+<p>底气是建立在前提的基础下的，就像很多人老想着一些不切实际的东西，然而并不能靠近原来的设想半步。</p>
+<p>我能这么想是因为——我之前买了国外的vps，哈哈哈没错就是digital ocean的云主机，没错我还部署了一个自己的论坛在上面（虽然现在还不能算上线毕竟有最基本的bug没有解决|衰==），然而这不是本篇的重点不是吗。</p>
+<p>没错本篇就是讨论如何利用国外的vps搭建自己的全局代理，使自己能够充分的享受“真正的”互联网带来的快乐。</p>
+<p>不提废话了直接开始，我不会告诉你还有大招留在后头哈哈：</p>
+<ul>
+<li><p>首先是利用ssh登陆你的vps</p>
+<pre><code>  <span class="hljs-title">ssh</span> root<span class="hljs-variable">@YourHostname</span>
+</code></pre><p>输入自己的秘密即可</p>
+</li>
+<li><p>登陆成功后，安装PPTPD(不懂pptp是什么请自己解决),</p>
+<pre><code>  sudo apt-<span class="hljs-keyword">get</span> install pptpd
+</code></pre></li>
+<li><p>编辑配置文件</p>
+<pre><code>  sudo <span class="hljs-keyword">vi</span> /etc/pptpd.<span class="hljs-keyword">conf</span>
+</code></pre></li>
+<li><p>再修改自己的IP</p>
+<pre><code>  localip 你的VPS IP
+  remoteip <span class="hljs-number">10.100</span><span class="hljs-number">.0</span><span class="hljs-number">.2</span>-<span class="hljs-number">10</span>
+</code></pre></li>
+</ul>
+<ul>
+<li><p>配置DNS</p>
+<pre><code>  sudo <span class="hljs-keyword">vi</span> /etc/ppp/pptpd-<span class="hljs-keyword">options</span>
+</code></pre><p>修改以下DNS</p>
+<pre><code>  ms-dns <span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span>
+  ms-dns <span class="hljs-number">8.8</span><span class="hljs-number">.4</span><span class="hljs-number">.4</span>
+</code></pre></li>
+<li><p>设置账户</p>
+<pre><code>  sudo vi <span class="hljs-regexp">/etc/</span>ppp<span class="hljs-regexp">/chap-secrets</span>
+</code></pre></li>
+<li><p>加一行，分别为用户名，服务，密码，限制IP：</p>
+<pre><code>  <span class="hljs-string">"user"</span> pptpd <span class="hljs-string">"user"</span> <span class="hljs-keyword">*</span>
+</code></pre></li>
+<li><p>重启服务</p>
+<pre><code>  sudo <span class="hljs-regexp">/etc/i</span>nit.d<span class="hljs-regexp">/pptpd restart</span>
+</code></pre></li>
+<li><p>设置转发</p>
+<pre><code>  sudo <span class="hljs-keyword">vi</span> /etc/sysctl.<span class="hljs-keyword">conf</span>
+</code></pre></li>
+<li><p>去掉注释</p>
+<pre><code>  net<span class="hljs-class">.ipv4</span><span class="hljs-class">.ip_forward</span>=<span class="hljs-number">1</span>
+</code></pre></li>
+<li><p>使立即生效</p>
+<pre><code>  <span class="hljs-title">sudo</span> sysctl -p
+</code></pre></li>
+<li><p>安装iptables</p>
+<pre><code>  sudo apt-<span class="hljs-keyword">get</span> install iptables
+</code></pre></li>
+<li><p>建立一个NAT</p>
+<pre><code>  sudo iptables -t nat -A POSTROUTING -s <span class="hljs-number">10.100</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span> -o eth0 -j MASQUERADE
+</code></pre></li>
+<li><p>保存规则，使规则重启不丢失</p>
+<pre><code>  sudo iptables-save &gt; <span class="hljs-regexp">/etc/iptables</span>-rules
+</code></pre></li>
+<li><p>编辑网卡文件</p>
+<pre><code>  sudo vi  <span class="hljs-regexp">/etc/</span>network<span class="hljs-regexp">/interfaces</span>
+</code></pre></li>
+<li><p>在文件末尾加入</p>
+<pre><code>  pre-up iptables-<span class="hljs-operator"><span class="hljs-keyword">restore</span> &lt; /etc/iptables-<span class="hljs-keyword">rules</span></span>
+</code></pre></li>
+<li><p>设置MTU,防止包过大</p>
+<pre><code>  sudo iptables -A FORWARD -s <span class="hljs-number">10.100</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span> -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --<span class="hljs-built_in">set</span>-mss <span class="hljs-number">1200</span>
+</code></pre></li>
+<li><p>保存</p>
+<pre><code>  sudo iptables-save &gt; <span class="hljs-regexp">/etc/iptables</span>-rules
+</code></pre></li>
+</ul>
+<h3 id="-vps-vpn-">至此一个由vps搭建的vpn代理就搭完了</h3>
+<h2 id="-vpn-windows-vpn-http-jingyan-baidu-com-article-72ee561abbcf2de16138df9f-html-vpn-">关于如何在电脑上设置vpn，如果你不熟悉，可以参考这里：<a href="http://jingyan.baidu.com/article/72ee561abbcf2de16138df9f.html" title="vpn百度经验">windows下如何使用vpn</a></h2>
+<p>是不是这样就完了？no no no,说好了会有大招，怎么会放鸽子嘞</p>
+<p>下面开始一键放大招时间——&gt;
+biu——boom</p>
+<p>高手过招都是，三俩招解决战斗，打过就是打过，打不过就不用逞强</p>
+<p>什么？你问我要会些什么？</p>
+<p>下载文件你懂不？</p>
+<p>解压文件你懂不？</p>
+<p>运行程序你会不？</p>
+<p>噢你都会呀，那妥了。</p>
+<p>下面：</p>
+<ul>
+<li><p>第一招/下脚本</p>
+<pre><code>  wget <span class="hljs-string">https:</span><span class="hljs-comment">//github.com/hunterzhang86/DigitalOceanVPN/archive/master.zip</span>
+</code></pre></li>
+<li><p>第二招/解压</p>
+<pre><code>  <span class="hljs-tag">unzip</span> <span class="hljs-tag">master</span><span class="hljs-class">.zip</span>
+</code></pre></li>
+<li><p>第三招/运行</p>
+<pre><code>  <span class="hljs-tag">unzip</span> <span class="hljs-tag">master</span><span class="hljs-class">.zip</span>
+</code></pre></li>
+<li><p>补充招/修改成自己的用户名加密码</p>
+<pre><code>  echo <span class="hljs-string">"用户名 pptpd   密码  *"</span> <span class="hljs-prompt">&gt;&gt; </span>/etc/ppp/chap-secrets
+</code></pre></li>
+</ul>
+<h3 id="done-">done！</h3>
+<p>另外，直接电脑开wifi手机连上后也能vpn这我能告诉你？</p>
+<blockquote>
+<p>能用暴力更好解决的问题，千万别废话，直接来硬的</p>
+</blockquote>
+<p>还是老规矩，上图镇楼</p>
+<image src = "http://a2.qpic.cn/psb?/V12mXJZz0UKpbh/axcoI*zdxsoKEkZH8zjXHgYEJ6oLBsPU9w48meCJjBU!/b/dGoAAAAAAAAA&bo=yQOAAgAAAAADB2o!&rf=viewer_4" style= "width:800px">
+
+<p>最后，以梅尔·吉布森《brave heart》中华莱士的经典台词收工————</p>
+<blockquote>
+<h2 id="freedom-">freedom !</h2>
+</blockquote>
+<p>以上。</p>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/kevinwang04" class="author-name">kevinwang</a>-<a href="https://github.com/kevinwang04/my-diary.git" class="source-repo">Source</a></address><p>welcome to my<a href="http://home.kwang520.com" class="site-repo"> home page</a></p></footer></body></html>
