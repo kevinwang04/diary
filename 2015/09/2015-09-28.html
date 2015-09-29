@@ -1,0 +1,41 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>September 28, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-63818301-1', 'auto');
+ga('send', 'pageview');</script></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>September 28, 2015</h1></header><div class="content"><div class="diary"><h3 id="javascript-quiz-">javascript quiz:</h3>
+<pre><code>    <span class="hljs-list">(<span class="hljs-keyword">function</span><span class="hljs-list">(<span class="hljs-keyword">x</span>)</span><span class="hljs-collection">{
+        delete x;
+        return x;
+      }</span>)</span><span class="hljs-list">(<span class="hljs-number">1</span>)</span><span class="hljs-comment">;</span>
+</code></pre><p>result:</p>
+<pre><code><span class="hljs-number">1</span>
+</code></pre><hr>
+<pre><code>    <span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">g</span><span class="hljs-params">()</span></span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">23</span>; };
+      <span class="hljs-keyword">typeof</span> g();
+</code></pre><p>result:</p>
+<pre><code>Uncaught ReferenceError: g is not <span class="hljs-function"><span class="hljs-title">defined</span><span class="hljs-params">(…)</span></span>
+</code></pre><hr>
+<ul>
+<li>Arguments 奇异对象不是数组</li>
+</ul>
+<p>函数表达式里面的函数名只能用于递归
+delete 不能删局部变量
+var，参数和函数名冲突时的优先级
+this 隐式参数的语义
+还是 this 的语义
+, 算符以及函数表达式中的函数名语义
+还是，函数表达式中的函数名语义
+typeof 的语义
+各种名字的区别
+声明前置
+构造器中 return 的行为
+with 的语义、Function::length 的语义</p>
+<p>关于this指向：</p>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/kevinwang04" class="author-name">kevinwang</a>-<a href="https://github.com/kevinwang04/my-diary.git" class="source-repo">Source</a></address><p>welcome to my<a href="http://home.kwang520.com" class="site-repo"> home page</a></p></footer></body></html>
