@@ -27,9 +27,9 @@ npm install 引入gulp-sass模块,运行gulp时出错</p>
 <li>Error: <code>libsass</code> bindings not found. Try reinstalling <code>node-    sass</code>? at getBinding<ul>
 <li>原因:没有装node-sass或node-sass版本异常</li>
 <li>解决:<ul>
-<li>(未装)<pre><code>  sudo npm <span class="hljs-operator"><span class="hljs-keyword">install</span> node-sass -<span class="hljs-keyword">g</span> </span>
+<li>(未装)<pre><code>  sudo npm install <span class="hljs-keyword">node</span><span class="hljs-identifier"></span><span class="hljs-title">-sass</span> -g 
 </code></pre></li>
-<li>(重装)<pre><code>  <span class="hljs-built_in">npm</span> rebuild node-sass
+<li>(重装)<pre><code>  npm rebuild <span class="hljs-keyword">node</span><span class="hljs-identifier"></span><span class="hljs-title">-sass</span>
 </code></pre>  (不可用uninstall+install方法,具体原因请看<a href="http://stackoverflow.com/questions/29461831/libsass-bindings-not-found-when-using-node-sass-in-nodejs">这里</a>)</li>
 <li>(重装gulp-sass)<pre><code>  npm <span class="hljs-keyword">remove</span> gulp-sass &amp;&amp; npm <span class="hljs-keyword">install</span> gulp-sass
 </code></pre></li>
