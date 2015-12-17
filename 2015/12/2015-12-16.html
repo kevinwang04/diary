@@ -1,0 +1,137 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>December 16, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-63818301-1', 'auto');
+ga('send', 'pageview');</script></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>December 16, 2015</h1></header><div class="content"><div class="diary"><h2 id="-v1-0">北京科技大学机电楼教室预约系统v1.0</h2>
+<p><a href="https://github.com/kevinwang04/order-class-system">源码地址</a></p>
+<hr>
+<h5 id="-">阶段一</h5>
+<ul>
+<li><p>完成用户登录</p>
+</li>
+<li><p>完成通过日期教室，获取可借时间段</p>
+</li>
+<li><p>完成提交新借阅</p>
+</li>
+<li><p>完成获取借阅列表并显示预约的不同状态</p>
+</li>
+<li><p>添加预约成功状态查看二维码功能</p>
+</li>
+</ul>
+<h5 id="-">阶段二</h5>
+<ul>
+<li><p>完成管理员登录</p>
+</li>
+<li><p>完成通过sessionStorage自动判断用户类型并跳转</p>
+</li>
+<li><p>完成管理借阅和查看已处理功能</p>
+</li>
+<li><p>增加管理员反馈</p>
+</li>
+<li><p>添加用户信息显示</p>
+</li>
+<li><p>添加登出页面</p>
+</li>
+</ul>
+<h5 id="-">阶段三</h5>
+<ul>
+<li><p>完成编辑教室页面，显示，增加，编辑，删除教室安排</p>
+</li>
+<li><p>添加选择日期后星期提醒</p>
+</li>
+<li><p>添加关于系统操作说明页面</p>
+</li>
+<li><p>添加管理员页面排序选择，可基于日期，时间段，教室号，操作状态进行排序</p>
+</li>
+<li><p>添加用户排序，可基于时间和预约状态</p>
+</li>
+</ul>
+<h5 id="-">阶段四</h5>
+<ul>
+<li><p>修复用户信息显示bug</p>
+</li>
+<li><p>添加用户和管理员查看操作反馈功能</p>
+</li>
+<li><p>页面添加顶部固定和回到顶部</p>
+</li>
+<li><p>添加系统使用反馈和底部信息栏</p>
+</li>
+<li><p>修改部分布局，改为响应式支持手机浏览</p>
+</li>
+</ul>
+<h5 id="-">待完成</h5>
+<ul>
+<li><p>基于需求添加特殊预约方案（一次预约多个教室，教室预约时间扩展）</p>
+</li>
+<li><p>完善注释和文档</p>
+</li>
+<li><p>添加测试和自动化部署</p>
+</li>
+</ul>
+<hr>
+<h4 id="-">备注：</h4>
+<ul>
+<li><p>全站为单页应用，首屏加载资源后只通过ajax交互，无需刷新</p>
+</li>
+<li><p>前端使用：</p>
+<ul>
+<li><p>React.js</p>
+</li>
+<li><p>flux</p>
+</li>
+</ul>
+</li>
+<li><p>自动化工具使用 ：</p>
+<ul>
+<li><p>gulp</p>
+</li>
+<li><p>browserify </p>
+</li>
+</ul>
+</li>
+<li><p>UI布局使用：</p>
+<ul>
+<li><p>React-Bootstrap</p>
+</li>
+<li><p>AmazeUI</p>
+</li>
+</ul>
+</li>
+<li><p>工具库：</p>
+<ul>
+<li><p>Jquery (Ajax)</p>
+</li>
+<li><p>React-router (路由)</p>
+</li>
+<li><p>object-assign</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="license">License</h2>
+<h5 id="the-mit-license-mit-">The MIT License (MIT)</h5>
+<p>Copyright (c) 2015 kevinwang</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/kevinwang04" class="author-name">kevinwang</a>-<a href="https://github.com/kevinwang04/my-diary.git" class="source-repo">Source</a></address><p>welcome to my<a href="http://home.kwang520.com" class="site-repo"> home page</a></p></footer></body></html>
